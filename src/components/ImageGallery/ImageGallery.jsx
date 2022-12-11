@@ -28,12 +28,16 @@ export class ImageGallery extends Component {
 
   render() {
     return (
-      <ul className="gallery">
-        {this.state.imgArr.map(img => {console.log(img); return <ImageGalleryItem
-            key={img.id}
-            url={img.webformatURL}
-            text={img.tags}
-          />;
+      <ul className="ImageGallery">
+        {this.state.imgArr.map(img => {
+          console.log(img);
+          return (
+            <ImageGalleryItem
+              key={img.id}
+              url={img.webformatURL}
+              text={img.tags}
+            />
+          );
         })}
       </ul>
     );

@@ -2,8 +2,8 @@ import React from 'react';
 
 export const ImageGalleryItem = ({url, text}) => {
   return (
-    <li className="gallery-item">
-      <img src={url} alt={text} />
+    <li className="ImageGalleryItem">
+      <img src={url} alt={text} className="ImageGalleryItem-image" />
     </li>
   );
 };
