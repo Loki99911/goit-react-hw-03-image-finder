@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { Searchbar } from "./Searchbar/Searchbar";
+import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 // import { render } from '@testing-library/react';
 
 export class App extends Component {
   state = {
-    name: "",
-    page: null,
+    name: '',
     error: null,
-    status: "idle"
-  }
+    status: 'idle',
+  };
 
-  handleSubmit = (name)=>{
-  this.setState({ name });
-  }
-
+  handleSubmit = name => {
+    this.setState({ name });
+  };
 
   render() {
     return (
@@ -29,8 +27,8 @@ export class App extends Component {
         }}
       >
         <Searchbar onSubmit={this.handleSubmit} />
-        <ImageGallery />
+        <ImageGallery name={this.state.name} />
       </div>
     );
-  };
+  }
 }
