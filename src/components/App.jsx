@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { Button } from './Button/Button';
+
 // import { render } from '@testing-library/react';
 
 export class App extends Component {
@@ -29,7 +29,7 @@ export class App extends Component {
       >
         <Searchbar onSubmit={this.handleSubmit} />
         <ImageGallery name={this.state.name} />
-        <Button />
+        
       </div>
     );
   }
