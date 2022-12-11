@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const ImageGalleryItem = () => {
+export const ImageGalleryItem = ({url, text}) => {
   return (
     <li className="gallery-item">
-      <img src="" alt="" />
+      <img src={url} alt={text} />
     </li>
   );
 };
