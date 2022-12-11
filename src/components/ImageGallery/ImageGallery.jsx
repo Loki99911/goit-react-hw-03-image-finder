@@ -17,12 +17,6 @@ export class ImageGallery extends Component {
           imgArr: [...prevState.imgArr, ...data.hits],
         }))
       );
-      // const newImgs = apiGet(newName, currentPage)
-      //   .then(response => {
-      //   console.log(response);
-      // });
-      // console.log(newImgs);
-      // this.setState(prevState => ({imgArr: [...prevState.imgArr, ...newImgs]}))
     }
   }
 
@@ -30,7 +24,6 @@ export class ImageGallery extends Component {
     return (
       <ul className="ImageGallery">
         {this.state.imgArr.map(img => {
-          console.log(img);
           return (
             <ImageGalleryItem
               key={img.id}
