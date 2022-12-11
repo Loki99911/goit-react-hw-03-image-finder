@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Button } from './Button/Button';
 // import { render } from '@testing-library/react';
 
 export class App extends Component {
@@ -17,18 +18,18 @@ export class App extends Component {
   render() {
     return (
       <div
-        // className={App}
-        // style={{
-        // // height: '100vh',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // fontSize: 40,
-        // color: '#010101',
-        // }}
+      // style={{
+      // // height: '100vh',
+      // display: 'flex',
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      // fontSize: 40,
+      // color: '#010101',
+      // }}
       >
         <Searchbar onSubmit={this.handleSubmit} />
         <ImageGallery name={this.state.name} />
+        <Button />
       </div>
     );
   }
