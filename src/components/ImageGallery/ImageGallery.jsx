@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { apiGet } from 'Service/api';
-import { Button } from 'components/Button/Button';
+// import { Button } from 'components/Button/Button';
+
 export class ImageGallery extends Component {
   state = {
     imgArr: [],
     page: 1,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  // arrUpdate = () => {
+  //   this.setState({ imgArr: this.props.arr });
+  // }
+
+  componentDidUpdate(prevProps, prevState) {    
     const newName = this.props.name;
-    const currentPage = this.state.page;
+    const currentPage = this.props.page;
 
     if (prevProps.name !== newName || prevState.page !== currentPage) {
-      apiGet(newName, currentPage).then(data =>
+      apiGet(newName, currentPage).then(data => {
         this.setState(prevState => ({
           imgArr: [...prevState.imgArr, ...data.hits],
-        }))
-      );
+          // _______Cюда
+        }));
+      });
     }
   }
 
-  changePage = () => {
-    this.setState({ page: this.state.page + 1 });
-  };
+  // changePage = () => {
+  //   this.setState({ page: this.state.page + 1 });
+  // };
 
   render() {
     return (
@@ -39,7 +45,7 @@ export class ImageGallery extends Component {
             );
           })}
         </ul>
-        {this.state.imgArr.length > 0 && <Button page={this.changePage} />}
+        {/* {this.state.imgArr.length > 0 && <Button page={this.changePage} />} */}
       </>
     );
   }

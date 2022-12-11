@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 export class Searchbar extends Component {
   state = {
     name: '',
+    // imgArr: [],
+    // page: 1,
   };
 
   formChange = event => {
@@ -13,9 +15,12 @@ export class Searchbar extends Component {
 
   formSubmit = event => {
     event.preventDefault();
-    if (this.state.name.trim()===""){
-      return alert("Please, enter something into the search fild!")
-    } this.props.onSubmit(this.state.name);
+    if (this.state.name.trim() === '') {
+      return alert('Please, enter something into the search fild!');
+    }
+    
+    this.props.onSubmitForm(this.state.name);
+    console.log(this.state);
   };
 
   render() {

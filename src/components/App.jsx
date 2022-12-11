@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Button } from './Button/Button';
 
 // import { render } from '@testing-library/react';
 
 export class App extends Component {
   state = {
     name: '',
-    error: null,
-    status: 'idle',
+    imgArr: [],
+    page: 1,
+    // error: null,
+    // status: 'idle',
   };
 
   handleSubmit = name => {
-    this.setState({ name });
+    // const { name, imgArr, page } = stateObj;
+    console.log(this.state.imgArr);
+    this.setState({ name, imgArr: [], page: 1 });
+    console.log(this.state.imgArr);
   };
+
+  changePage = () => {
+    this.setState({ page: this.state.page + 1 });
+  };
+
+  // arrUpdate = () => {
+  //   this.setState({ imgArr: this.props.imgArr });
+  // };
 
   render() {
     return (
@@ -27,9 +41,13 @@ export class App extends Component {
       // color: '#010101',
       // }}
       >
-        <Searchbar onSubmit={this.handleSubmit} />
-        <ImageGallery name={this.state.name} />
-        
+        <Searchbar onSubmitForm={this.handleSubmit} />
+        <ImageGallery
+          name={this.state.name}
+          // arr={this.state.imgArr}
+          page={this.state.page}
+        />
+        {this.state.imgArr.length > 0 && <Button page={this.changePage} />}
       </div>
     );
   }
