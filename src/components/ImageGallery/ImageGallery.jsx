@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { apiGet } from 'Service/api';
-import { Button } from "components/Button/Button"
+import { Button } from 'components/Button/Button';
 export class ImageGallery extends Component {
   state = {
     imgArr: [],
     page: 1,
   };
-  
+
   componentDidUpdate(prevProps, prevState) {
     const newName = this.props.name;
     const currentPage = this.state.page;
@@ -20,6 +20,10 @@ export class ImageGallery extends Component {
       );
     }
   }
+
+  changePage = () => {
+    this.setState({ page: this.state.page + 1 });
+  };
 
   render() {
     return (
@@ -35,7 +39,7 @@ export class ImageGallery extends Component {
             );
           })}
         </ul>
-        <Button />
+        {this.state.imgArr.length > 0 && <Button page={this.changePage} />}
       </>
     );
   }

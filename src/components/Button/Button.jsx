@@ -1,8 +1,12 @@
 import React from 'react';
 
-export const Button = ({ url, text }) => {
+export const Button = ({page}) => {
   return (
-    <button type="button" className="Button" onClick={this.formSubmit}>
+    <button
+      type="button"
+      className="Button"
+      onClick={()=>page()}
+    >
       Load more
     </button>
   );
