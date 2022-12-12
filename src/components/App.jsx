@@ -40,7 +40,9 @@ export class App extends Component {
     this.setState({ page: this.state.page + 1 });
   };
 
-  
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
+  };
 
   render() {
     return (

@@ -11,6 +11,7 @@ export const ImageGallery = ({ imgArr }) => {
             url={img.webformatURL}
             text={img.tags}
             largeImg={img.largeImageURL}
+            onClick={largeImg => {}}
           />
         );
       })}
