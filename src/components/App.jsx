@@ -3,6 +3,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
+import { Modal } from './Modal/Modal';
 import { apiGet } from 'Service/api';
 // import { render } from '@testing-library/react';
 
@@ -13,6 +14,7 @@ export class App extends Component {
     page: 1,
     totalImg: 0,
     loaderOn: false,
+    showModal: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -38,6 +40,8 @@ export class App extends Component {
     this.setState({ page: this.state.page + 1 });
   };
 
+  
+
   render() {
     return (
       <div
@@ -56,8 +60,9 @@ export class App extends Component {
         <ImageGallery imgArr={this.state.imgArr} />
         {this.state.loaderOn && <Loader />}
         {this.state.imgArr.length < this.state.totalImg && (
-        <Button page={this.changePage} />
+          <Button page={this.changePage} />
         )}
+        {this.state.showModal && <Modal />}
       </div>
     );
   }
