@@ -16,10 +16,10 @@ export class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const newName = this.state.name;
     const currentPage = this.state.page;
-
+console.log(this.state);
     if (prevState.name !== newName || prevState.page !== currentPage) {
       apiGet(newName, currentPage).then(data => {
-        console.log(data);
+        // console.log(data);
         this.setState(prevState => ({
           imgArr: [...prevState.imgArr, ...data.hits],
           totalImg: data.total,
@@ -50,7 +50,7 @@ export class App extends Component {
       >
         <Searchbar onSubmitForm={this.handleSubmit} />
         <ImageGallery imgArr={this.state.imgArr} />
-        {this.state.imgArr.length >= 12 && <Button page={this.changePage} />}
+        {this.state.imgArr.length < this.state.totalImg && <Button page={this.changePage} />}
       </div>
     );
   }
