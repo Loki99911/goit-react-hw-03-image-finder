@@ -10,6 +10,7 @@ export const ImageGallery = ({ imgArr }) => {
             key={img.id}
             url={img.webformatURL}
             text={img.tags}
+            largeImg={img.largeImageURL}
           />
         );
       })}
