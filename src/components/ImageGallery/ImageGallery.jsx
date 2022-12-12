@@ -1,7 +1,7 @@
 import React from 'react'; //, { Component }
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export const ImageGallery = ({ imgArr }) => {
+export const ImageGallery = ({ imgArr, funcToggle }) => {
   return (
     <ul className="ImageGallery">
       {imgArr.map(img => {
@@ -11,7 +11,7 @@ export const ImageGallery = ({ imgArr }) => {
             url={img.webformatURL}
             text={img.tags}
             largeImg={img.largeImageURL}
-            onClick={largeImg => {}}
+            funcToggle
           />
         );
       })}

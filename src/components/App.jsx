@@ -59,7 +59,7 @@ export class App extends Component {
         }}
       >
         <Searchbar onSubmitForm={this.handleSubmit} />
-        <ImageGallery imgArr={this.state.imgArr} />
+        <ImageGallery imgArr={this.state.imgArr} funcToggle={this.toggleModal} />
         {this.state.loaderOn && <Loader />}
         {this.state.imgArr.length < this.state.totalImg && (
           <Button page={this.changePage} />

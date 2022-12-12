@@ -8,7 +8,7 @@ export class Modal extends Component {
     return createPortal(
       <div className="Overlay">
         <div className="Modal">
-          {/* <img src={this.props.url} alt={this.props.text} /> */}
+          <img src={this.props.url} alt={this.props.text} />
         </div>
       </div>,
       modalRoot,
