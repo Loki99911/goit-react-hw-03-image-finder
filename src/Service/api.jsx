@@ -4,7 +4,8 @@ export function apiGet(name, page) {
     `https://pixabay.com/api/?key=${API_KEY}&q=${name}&image_type=photo&page=${page}&per_page=12`
   ).then(response => {
     if (!response.ok) {
-      return console.log(response.status);
+      // return console.log(response.status);
+      throw new Error(response.status);
     }
     return response.json();
   });

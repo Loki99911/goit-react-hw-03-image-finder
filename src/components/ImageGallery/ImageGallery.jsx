@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react'; //, { Component }
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
@@ -11,7 +12,7 @@ export const ImageGallery = ({ imgArr, funcToggle }) => {
             url={img.webformatURL}
             text={img.tags}
             largeImg={img.largeImageURL}
-            funcToggle
+            funcToggle={funcToggle}
           />
         );
       })}
@@ -19,3 +20,11 @@ export const ImageGallery = ({ imgArr, funcToggle }) => {
   );
 };
 
+ImageGallery.propTypes = {
+  imgArr: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
+  funcToggle: PropTypes.func.isRequired,
+};
