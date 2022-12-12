@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
-
+import { apiGet } from 'Service/api';
 // import { render } from '@testing-library/react';
 
 export class App extends Component {
@@ -10,24 +10,31 @@ export class App extends Component {
     name: '',
     imgArr: [],
     page: 1,
-    // error: null,
-    // status: 'idle',
+    totalImg: 0,
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    const newName = this.state.name;
+    const currentPage = this.state.page;
+
+    if (prevState.name !== newName || prevState.page !== currentPage) {
+      apiGet(newName, currentPage).then(data => {
+        console.log(data);
+        this.setState(prevState => ({
+          imgArr: [...prevState.imgArr, ...data.hits],
+          totalImg: data.total,
+        }));
+      });
+    }
+  }
+
   handleSubmit = name => {
-    // const { name, imgArr, page } = stateObj;
-    console.log(this.state.imgArr);
     this.setState({ name, imgArr: [], page: 1 });
-    console.log(this.state.imgArr);
   };
 
   changePage = () => {
     this.setState({ page: this.state.page + 1 });
   };
-
-  // arrUpdate = () => {
-  //   this.setState({ imgArr: this.props.imgArr });
-  // };
 
   render() {
     return (
@@ -42,12 +49,8 @@ export class App extends Component {
       // }}
       >
         <Searchbar onSubmitForm={this.handleSubmit} />
-        <ImageGallery
-          name={this.state.name}
-          // arr={this.state.imgArr}
-          page={this.state.page}
-        />
-        {this.state.imgArr.length > 0 && <Button page={this.changePage} />}
+        <ImageGallery imgArr={this.state.imgArr} />
+        {this.state.imgArr.length >= 12 && <Button page={this.changePage} />}
       </div>
     );
   }

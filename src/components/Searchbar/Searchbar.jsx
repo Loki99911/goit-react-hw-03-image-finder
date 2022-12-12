@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 export class Searchbar extends Component {
   state = {
     name: '',
-    // imgArr: [],
-    // page: 1,
   };
 
   formChange = event => {
@@ -18,9 +16,8 @@ export class Searchbar extends Component {
     if (this.state.name.trim() === '') {
       return alert('Please, enter something into the search fild!');
     }
-    
+
     this.props.onSubmitForm(this.state.name);
-    console.log(this.state);
   };
 
   render() {
@@ -30,7 +27,6 @@ export class Searchbar extends Component {
           <button type="submit" className="SearchForm-button ">
             <span className="SearchForm-button-label">Search</span>
           </button>
-
           <input
             className="SearchForm-input"
             type="text"
