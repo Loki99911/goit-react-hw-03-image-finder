@@ -42,7 +42,7 @@ export class App extends Component {
     return (
       <div
         style={{
-          // // height: '100vh',
+          // height: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -56,7 +56,7 @@ export class App extends Component {
         <ImageGallery imgArr={this.state.imgArr} />
         {this.state.loaderOn && <Loader />}
         {this.state.imgArr.length < this.state.totalImg && (
-          <Button page={this.changePage} />
+        <Button page={this.changePage} />
         )}
       </div>
     );
