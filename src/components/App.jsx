@@ -25,7 +25,7 @@ export class App extends Component {
         .then(data => {
           if (data.hits.length === 0) {
             this.setState({ loaderOn: false });
-            alert(`Sorry((( Nothing found for your request ${newName} `);
+            alert(`Sorry((( Nothing found for your request "${newName}" `);
         }
           this.setState(prevState => ({
             imgArr: [...prevState.imgArr, ...data.hits],
