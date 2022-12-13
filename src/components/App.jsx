@@ -5,6 +5,8 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import { apiGet } from 'Service/api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class App extends Component {
   state = {
@@ -24,18 +26,19 @@ export class App extends Component {
       apiGet(newName, currentPage)
         .then(data => {
           if (data.hits.length === 0) {
-            this.setState({ loaderOn: false });
-            alert(`Sorry((( Nothing found for your request "${newName}" `);
-        }
+            toast.error(
+              `Sorry((( Nothing found for your request "${newName}" `
+            );
+          }
           this.setState(prevState => ({
             imgArr: [...prevState.imgArr, ...data.hits],
             totalImg: data.total,
-            loaderOn: false,
             largeImg: '',
             text: '',
           }));
         })
-        .catch(error => alert(`${error.massage}`));
+        .catch(error => toast.error(`${error.massage}`))
+        .finally(() => this.setState({ loaderOn: false }));
     }
   }
 
@@ -65,19 +68,19 @@ export class App extends Component {
           justifyContent: 'center',
           alignItems: 'center',
           width: '100%',
-          fontSize: 40,
-          color: '#010101',
+          fontSize: 16,
+          color: 'red',
         }}
       >
         <Searchbar onSubmitForm={this.handleSubmit} />
+        <ToastContainer position="top-center" autoClose={3000} theme="light" />
         <ImageGallery
           imgArr={this.state.imgArr}
           funcToggle={this.toggleModal}
         />
         {this.state.loaderOn && <Loader />}
-        {this.state.imgArr.length < this.state.totalImg && (
-          <Button page={this.changePage} />
-        )}
+        {this.state.imgArr.length < this.state.totalImg &&
+          !this.state.loaderOn && <Button page={this.changePage} />}
         {this.state.showModal && (
           <Modal
             url={this.state.largeImg}

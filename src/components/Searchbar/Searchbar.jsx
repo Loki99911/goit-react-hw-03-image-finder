@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 export class Searchbar extends Component {
   state = {
@@ -14,7 +15,7 @@ export class Searchbar extends Component {
   formSubmit = event => {
     event.preventDefault();
     if (this.state.name.trim() === '') {
-      return alert('Please, enter something into the search fild!');
+      return toast.error('Please, enter something into the search fild!');
     }
 
     this.props.onSubmitForm(this.state.name);
